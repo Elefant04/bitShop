@@ -2,9 +2,9 @@
 
 function parseHTML($html, $staticReplacements){
 
-	foreach($html as $htmlLine){
+	for($i = 0; $i < count($html); $i++){
 		foreach($staticReplacements as $replacement){
-			str_ireplace($replacement['name'], $replacement['content'], $htmlLine);
+			$html[$i] = str_replace($replacement['name'], $replacement['content'], $html[$i]);
 		}
 	}
 
