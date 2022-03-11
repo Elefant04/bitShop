@@ -1,5 +1,4 @@
 <?php 
-
 $langReplacementArray[] = array();
 
 $langReplacementArray[0] = array('name' => '###_Title_###', 'content' => 'Bitshop');
