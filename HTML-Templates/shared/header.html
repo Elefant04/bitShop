@@ -1,6 +1,22 @@
 <header>
-	<form action="searchResult.php" method="get">
-		<input type="text" name="suchleiste" id="suchleiste">
-		<input type="submit" value="###_Suchen_###">
-	</form>
+	<div class="headerTopRow">
+		<h1>Bitshop</h1>
+		<div class="searchBar">
+			<form action="searchResult.php" method="get">
+				<label for="searchQuery" class="invisibleLabel">###_Suchen_###</label>
+				<input type="text" name="searchQuery" id="searchQuery" placeholder="###_Suchen_###">
+				<input type="submit" name="submit" value="###_Suchen_###" id="searchSubmit">
+			</form>
+		</div>
+		<div class="accountArea">
+			<p>###_Dein-Konto_###</p>
+		</div>
+	</div>
+	<nav>
+		<ul>
+			<li><a href="viewCategory.php?category=Grafikkarten">Grafikkarten</a></li>
+			<li><a href="viewCategory.php?category=Monitore">Monitore</a></li>
+			<li><a href="viewCategory.php?category=Fertig-PCs">Fertig-PCs</a></li>
+		</ul>
+	</nav>
 </header>
