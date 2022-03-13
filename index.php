@@ -1,11 +1,15 @@
-
 <?php 
+header('Content-Type: text/html; charset=utf-8');
+if(!isset($_SESSION)){
+	session_start();
+}
+
+include_once('inc/setLang.php');
 require_once('inc/parser.php');
-include_once('lang/de.php');
+require_once('inc/db_queries.php');
 
 
-
-$dynamicReplacementArray  = array('Highlights' => array(array('name' => 'RTX 3090'),array('name' => 'RTX 3080'),array('name' => 'RTX 3070'),array('name' => 'RTX 3060')));
+$dynamicReplacementArray  = array('Highlights' => getMostExpensiveProducts());
 
 
 

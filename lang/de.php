@@ -1,7 +1,8 @@
 <?php 
-$langReplacementArray[0] = array('name' => '###_Title_###', 'content' => 'Bitshop');
-$langReplacementArray[1] = array('name' => '###_Suchen_###', 'content' => 'suchen');
-$langReplacementArray[2] = array('name' => '###_Dein-Konto_###', 'content' => 'Mein Konto');
+$langReplacementArray[0] = array('name' => 'Title', 'content' => 'Bitshop');
+$langReplacementArray[1] = array('name' => 'Suchen', 'content' => 'suchen');
+$langReplacementArray[2] = array('name' => 'Dein-Konto', 'content' => 'Mein Konto');
+$langReplacementArray[3] = array('name' => 'SuchergebnissUeberschrift', 'content' => 'Suchergebnisse');
 
 
 ?>
