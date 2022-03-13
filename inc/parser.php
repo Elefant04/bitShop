@@ -63,7 +63,7 @@ function parseHTML($htmlPath, $staticReplacements,$dynamicReplacements = array()
 		}
 		else{
 			foreach($staticReplacements as $replacement){
-				$html[$i] = str_replace($replacement['name'], $replacement['content'], $html[$i]);
+				$html[$i] = str_replace('###_' . $replacement['name'] . '_###', $replacement['content'], $html[$i]);
 			}
 		}
 	}
