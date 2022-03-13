@@ -79,3 +79,29 @@ header nav ul{
 header * a{
     color:#00e;
 }
+
+.highlightArea{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content:flex-start;
+    align-items: flex-start;
+}
+
+.highlightItem{
+    width: 200px;
+    padding: 10px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    box-shadow: 0px 0px 20px #8f828299;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.highlightItem img{
+    width: inherit;
+}
