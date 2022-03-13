@@ -75,3 +75,7 @@ header nav ul{
     padding:15px;
     font-size: medium;
 }
+
+header * a{
+    color:#00e;
+}
