@@ -89,7 +89,16 @@ header * a{
     align-items: flex-start;
 }
 
-.highlightItem{
+.searchResultArea{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content:flex-start;
+    align-items: flex-start;
+}
+
+.productCard{
     width: 200px;
     padding: 10px;
     height: 300px;
@@ -100,8 +109,14 @@ header * a{
     box-shadow: 0px 0px 20px #8f828299;
     border-radius: 5px;
     margin: 10px;
+    transition: all 0.5s ease-out;
 }
 
-.highlightItem img{
+.productCard:hover{
+    box-shadow: 4px 4px 15px 10px #8f828299;
+    transition: all 0.5s ease-out;
+}
+
+.productCard img{
     width: inherit;
 }
