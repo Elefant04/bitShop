@@ -11,7 +11,7 @@
         ++-header-++
 
         <h2>###_SuchergebnissUeberschrift_###</h2>
-        <div class="searchResultArea">
+        <div class="searchResultArea" id="searchResultArea">
             @@@-results-@@@
                 <div class="productCard">
                     <img src="assets/products/@@#-bild-#@@" alt="@@#-produktName-#@@">
@@ -26,5 +26,17 @@
         ++-footer-++        
         <!-- suchseite.html-->
     </div>
+    <script>
+        sleep(1000).then(() => {
+            if(urlParams.get('category') != undefined){
+                loadAdditionalProductsCategory(5);
+                return;
+            }
+            else if(urlParams.get('searchQuery') != undefined){
+                loadAdditionalProductsSearch(5);
+                return;
+            }
+        });
+    </script>
 </body>
 </html>
