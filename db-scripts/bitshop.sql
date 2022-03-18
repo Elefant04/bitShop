@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 13. Mrz 2022 um 12:46
--- Server-Version: 10.4.21-MariaDB
--- PHP-Version: 8.0.10
+-- Erstellungszeit: 18. Mrz 2022 um 09:54
+-- Server-Version: 10.4.20-MariaDB
+-- PHP-Version: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,16 +29,12 @@ USE `bitshop`;
 -- Tabellenstruktur für Tabelle `hersteller`
 --
 
+DROP TABLE IF EXISTS `hersteller`;
 CREATE TABLE `hersteller` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- TRUNCATE Tabelle vor dem Einfügen `hersteller`
---
-
-TRUNCATE TABLE `hersteller`;
 --
 -- Daten für Tabelle `hersteller`
 --
@@ -49,7 +45,12 @@ INSERT INTO `hersteller` (`id`, `name`) VALUES
 (3, 'asus'),
 (4, 'intel'),
 (5, 'HP'),
-(6, 'Microsoft');
+(6, 'Microsoft'),
+(7, 'Captiva '),
+(8, 'Samsung'),
+(9, 'Team Group'),
+(12, 'G.Skill'),
+(13, 'Corsair');
 
 -- --------------------------------------------------------
 
@@ -57,17 +58,13 @@ INSERT INTO `hersteller` (`id`, `name`) VALUES
 -- Tabellenstruktur für Tabelle `kategorie`
 --
 
+DROP TABLE IF EXISTS `kategorie`;
 CREATE TABLE `kategorie` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `beschreibung` varchar(2024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- TRUNCATE Tabelle vor dem Einfügen `kategorie`
---
-
-TRUNCATE TABLE `kategorie`;
 --
 -- Daten für Tabelle `kategorie`
 --
@@ -76,7 +73,9 @@ INSERT INTO `kategorie` (`id`, `name`, `beschreibung`) VALUES
 (1, 'Grafikkarten', ''),
 (2, 'Fertig-PCs', ''),
 (3, 'Prozessoren', ''),
-(4, 'Monitore', '');
+(4, 'Monitore', ''),
+(5, 'RAM', ''),
+(6, 'SSD', '');
 
 -- --------------------------------------------------------
 
@@ -84,6 +83,7 @@ INSERT INTO `kategorie` (`id`, `name`, `beschreibung`) VALUES
 -- Tabellenstruktur für Tabelle `kunde`
 --
 
+DROP TABLE IF EXISTS `kunde`;
 CREATE TABLE `kunde` (
   `id` int(11) NOT NULL,
   `Anrede` varchar(10) NOT NULL,
@@ -99,17 +99,13 @@ CREATE TABLE `kunde` (
   `Passwort` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- TRUNCATE Tabelle vor dem Einfügen `kunde`
---
-
-TRUNCATE TABLE `kunde`;
 -- --------------------------------------------------------
 
 --
 -- Tabellenstruktur für Tabelle `produkt`
 --
 
+DROP TABLE IF EXISTS `produkt`;
 CREATE TABLE `produkt` (
   `id` int(11) NOT NULL,
   `name` varchar(512) NOT NULL,
@@ -121,11 +117,6 @@ CREATE TABLE `produkt` (
   `bild` varchar(2024) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- TRUNCATE Tabelle vor dem Einfügen `produkt`
---
-
-TRUNCATE TABLE `produkt`;
 --
 -- Daten für Tabelle `produkt`
 --
@@ -147,7 +138,12 @@ INSERT INTO `produkt` (`id`, `name`, `hersteller`, `kategorie`, `rabatt`, `preis
 (14, 'Intel Core i7-9700KF', 4, 3, 1, '310.00', 'Die NEUEN Intel Core Desktop-Prozessoren der 9. Generation sind die bislang leistungsstärkste Generation in der Reihe der Intel Core Desktop-Prozessoren. Mit dieser neuen Prozessorgeneration eröffnen sich sowohl für Computerspieler, die auf ein fantastisches Gaming-Erlebnis mit ausreichendem Leistungsspielraum für flüssiges Livestreaming und problemloses Aufzeichnen der Highlights Wert legen, als auch für Kreative, die gerne mehr verfassen, gestalten und mit anderen teilen und weniger Zeit mit dem Warten auf den Computer verbringen würden, völlig neue Horizonte.', 'intel_bx80684i79700kf_boxed_intel_core_i7_9700kf_1455408.jpg'),
 (15, 'AMD Ryzen 7 3700X', 2, 3, 0, '304.00', 'AMD Prozessoren der Ryzen 3000 Serie liefern konkurrenzlose Technologie für überragende Leistung. Erleben und nutzen Sie Technologien wie Precision Boost Overdrive, Precision Boost 2, Pure Power und AMD StoreMI und mehr, alles mit den Prozessoren der AMD Ryzen 3000 Serie. AMD Ryzen Prozessoren der 3. Generation mit 7nm \"Zen 2\"-Kern setzen Standards für hohe Leistung durch exklusive Fertigungstechnologie, bahnbrechenden Chip-Durchsatz und revolutionäre Gesamtleistung. Die Erfolgsserie des technologischen Fortschritts: AMD Ryzen Prozessoren der 3. Generation. Sie bietet erstmals auch Konnektivität für PCIe 4,0, um die modernsten Mainboards, Grafikkarten und Speichertechnologien der Welt zu unterstützen. AMD Ryzen Prozessoren der 3. Generation liefern, was Sie brauchen, immer und überall. Der weltweit fortschrittlichste Desktop Prozessor ist nicht nur für Leistung gemacht, sondern für Gewinner.', '19239708-A_3rdGENRYZEN7_ROW_RF (1).webp'),
 (16, 'Intel Core i7-10700K', 4, 3, 2, '400.00', 'Die Intel Core i7 Prozessoren stellen dank schnellerer, intelligenter Multicore-Technik, die Rechenleistung dynamisch ganz nach Bedarf zuweist, einen unglaublichen Durchbruch bei der PC-Leistung dar. Sie sind die besten Intel Desktop-Prozessoren aller Zeiten.\r\nErleben Sie schnelleres Multitasking und erstellen Sie beeindruckende digitale Medien. Und durch die Kombination aus Intel Turbo Boost Technology und Intel Hyper-Threading-Technologie (Intel HT-Technologie), die die volle Prozessorleistung genau dort entfaltet, wo Sie sie am dringendsten benötigen, können Sie bei allem, was Sie auf Ihrem PC erledigen, auf maximale Leistung zählen.\r\nIntel Turbo Boost Technology beschleunigt anspruchsvolle Anwendungen und passt die Leistung dynamisch an die Anforderungen an. Geniessen Sie mehr Leistung, wenn Sie sie benötigen. Intel Hyper-Threading-Technologie unterstützt Multithread-Anwendungen, damit Sie mehrere Aufgaben gleichzeitig erledigen können. Dem Betriebssystem stehen acht Verarbeitungsthreads zur Verfügung. So wird Multitasking einfacher denn je.\r\nIntel Advanced-Smart-Cache: Mehr Leistung und Effizienz für das Cache-Subsystem. Für die führenden Multithread-Spiele optimiert.\r\nIntegrierter Speichercontroller unterstützt drei Kanäle für DDR3-1066-MHz-Speicher und damit eine Speicherbandbreite von bis zu 25,6 GB/s. Die geringere Latenz und höhere Bandbreite dieses Speichercontrollers stellt für datenintensive Anwendungen unglaubliche Leistungsmerkmale bereit.\r\nIntel HD-Boost ermöglicht deutliche Verbesserungen für zahlreiche Multimedia- und andere rechenintensive Anwendungen. 128-Bit-SSE-Befehle werden mit einer Frequenz von einem Befehl pro Taktzyklus verarbeitet, wodurch diese Technik für Anwendungen, die für SSE4 optimiert sind, einen neuen Massstab in puncto Prozessoreffizienz setzt.', 'i7K_Center_2000x2000px.webp'),
-(17, 'Intel Core i9-9900KF', 4, 3, 10, '550.00', 'Die NEUEN Intel Core Desktop-Prozessoren der 9. Generation sind die bislang leistungsstärkste Generation in der Reihe der Intel Core Desktop-Prozessoren. Mit dieser neuen Prozessorgeneration eröffnen sich sowohl für Computerspieler, die auf ein fantastisches Gaming-Erlebnis mit ausreichendem Leistungsspielraum für flüssiges Livestreaming und problemloses Aufzeichnen der Highlights Wert legen, als auch für Kreative, die gerne mehr verfassen, gestalten und mit anderen teilen und weniger Zeit mit dem Warten auf den Computer verbringen würden, völlig neue Horizonte.', 'intel_bx80684i99900kf_boxed_intel_core_i9_9900kf_1455409.webp');
+(17, 'Intel Core i9-9900KF', 4, 3, 10, '550.00', 'Die NEUEN Intel Core Desktop-Prozessoren der 9. Generation sind die bislang leistungsstärkste Generation in der Reihe der Intel Core Desktop-Prozessoren. Mit dieser neuen Prozessorgeneration eröffnen sich sowohl für Computerspieler, die auf ein fantastisches Gaming-Erlebnis mit ausreichendem Leistungsspielraum für flüssiges Livestreaming und problemloses Aufzeichnen der Highlights Wert legen, als auch für Kreative, die gerne mehr verfassen, gestalten und mit anderen teilen und weniger Zeit mit dem Warten auf den Computer verbringen würden, völlig neue Horizonte.', 'intel_bx80684i99900kf_boxed_intel_core_i9_9900kf_1455409.webp'),
+(18, 'Captiva I67-333', 7, 2, 10, '4955.00', 'Intel Core i9-12900KF, 64 GB, 2000 GB, SSD', '67383_01_o.RGB_RAM.avif'),
+(19, 'Captiva R57-197', 7, 2, 0, '1117.00', 'AMD Ryzen 5 3600, 16 GB, 1000 GB, SSD', '359111_0.0x800.avif'),
+(20, 'Samsung 980 Pro', 8, 6, 0, '309.00', 'Entfesseln Sie die Leistung der Samsung SSD 980 Pro, der ersten PCIe 4.0 NVMe SSD von Samsung für den Heimgebrauch - für EDV-Erfahrungen auf dem nächsten Level. Die für grafikintensive Games und Hochleistungsanwendungen konzipierte 980 Pro setzt den eigens von Samsung entwickelten Controller sowie PCIe 4.0 ein und verdoppelt die Datenübertragungsrate von PCIe 3.0. Die Abwärtskompatibilität und der kompakte M.2-Formfaktor sorgen dabei für Vielseitigkeit und Flexibilität in diversen Hochleistungs-EDV-Lösungen.\r\n\r\nNVMe-SSD-Leistung auf dem nächsten Level: Der massgefertigte Elpis Controller für PCIe 4.0 SSDs von Samsung, die modernen V-NAND- und DRAM-Technologien und alle weiteren Komponenten sowie die Firmware der 980 Pro werden von Samsung intern entwickelt und hergestellt, um Leistung und Geschwindigkeit zu maximieren. Die 980 Pro ist ungefähr doppelt so schnell wie die PCIe 3.0 SSDs der Vorgängergeneration und 12,7 Mal so schnell wie SATA SSDs.\r\n\r\nEine überzeugende Kombination: Die für Hardcore-Gamer, Kreativprofis und technisch versierte Benutzer entwickelte 980 Pro bietet Hochleistungsbandbreite und -durchsatz für leistungsintensive Anwendungen in Gaming, Grafik, Datenanalyse und mehr. Sie lädt Games schnell sowohl auf PCs als auch auf Konsolen, wodurch Sie mehr spielen und weniger warten. Ihre Performance ist zudem für die nahtlose Verarbeitung von 4K- und 8K-Inhalten optimiert. Die 980 Pro ist im kompakten M.2 2280-Formfaktor gebaut und kann für eine maximale Flexibilität beim Leiterplattendesign leicht in Desktop-PCs und Laptops eingesteckt werden. Die optimierte Energieeffizienz macht das Laufwerk ideal für Hochleistungs-EDV-Systeme.\r\n\r\nIntelligente, verlässliche Temperaturkontrolle: Die nächste Leistungsstufe der 980 Pro wird von einer aussergewöhnlichen Temperaturkontrolle gestützt. Die SSD verwendet eine Nickelbeschichtung anstelle eines externen Kupfergehäuses, um die Temperatur des Controllers besser zu steuern, sowie ein Heat- Spreader-Label, das die Temperatur des NAND Kontro', 'MZ-V8P2T0BW_001_Front_Black.avif'),
+(21, 'Team Group T-Force Xtreem ARGB, DDR4-3600, CL18 - 16 GB Dual Kit', 9, 5, 0, '146.00', 'Schneller DDR4-RAM mit schickem Design, mit digital adressierbarer RGB-Beleuchtung, 16-GB-Dual-Kit (2x 8 GB), 3.600 MHz Takt, CL18-Latenzen, 1,35 V Spannung.', 'metg-383_metg_383_01.avif'),
+(22, 'G.Skill Trident Z Royal', 12, 5, 0, '791.00', 'Kurzinfo: G.Skill Trident Z Royal Series - DDR4 - 128 GB: 4 x 32 GB - DIMM 288-PIN - 4000 MHz / PC4-32000 - CL18 - 1.4 V - ungepuffert - non-ECC - Silber Gruppe RAM Hersteller G.Skill Hersteller Art. Nr. F4-4000C18Q-128GTRS EAN/UPC Produktbeschreibung: G.Skill Trident Z Royal Series - DDR4 - 128 GB: 4 x 32 GB - DIMM 288-PIN - ungepuffert Produkttyp RAM-Speicher Kapazität 128 GB: 4 x 32 GB Speichertyp DDR4 SDRAM - DIMM 288-PIN Erweiterungstyp Generisch Datenintegritätsprüfung Non-ECC Geschwindigkeit 4000 MHz (PC4-32000) Latenzzeiten CL18 (18-22-22-42) Leistungsmerkmale Wärmeverteiler aus Aluminium, Dualer Kanal, Vier-Kanal, Intel Extreme Memory Profiles (XMP 2.0), 10-Layer-PCB-Wärmeverteiler, ASUS Aura Sync-Support, RGB-Farben der LED-Beleuchtung, Unterstützung von MSI Mystic Light RGB, Gigabyte RGB Support, ASRock Polychrome-Support, Kronjuwelen-Design, Trident Z Tri-Fin-Design, Kristall-Element, 8 RGB-Lichtzonen, ungepuffert Spannung 1.4 V Ausführliche Details Allgemein Kapazität 128 GB:.', '160128484510.jpg');
 
 --
 -- Indizes der exportierten Tabellen
@@ -186,13 +182,13 @@ ALTER TABLE `produkt`
 -- AUTO_INCREMENT für Tabelle `hersteller`
 --
 ALTER TABLE `hersteller`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT für Tabelle `kategorie`
 --
 ALTER TABLE `kategorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT für Tabelle `kunde`
@@ -204,7 +200,7 @@ ALTER TABLE `kunde`
 -- AUTO_INCREMENT für Tabelle `produkt`
 --
 ALTER TABLE `produkt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
