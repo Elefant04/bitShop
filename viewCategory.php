@@ -8,7 +8,7 @@ require_once('inc/parser.php');
 require_once('inc/db_queries.php');
 
 if(isset($_GET['category'])){
-	$dynamicReplacementArray  = array('results' => getProductsFromCategory($_GET['category']));
+	$dynamicReplacementArray  = array('results' => getRangeOfProductsFromCategory($_GET['category'], 0,10));
 } else {
 	//output Error 404
 	include('index.php');
