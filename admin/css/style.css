@@ -1,0 +1,60 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+div.siteWrapper{
+	width:100%;
+	display:flex;
+    height: 1000px;
+}
+
+aside{
+	width:200px;
+	background-color: aqua;
+	display: flex;
+	justify-content: center;
+}
+
+aside nav{
+
+}
+
+header{
+	width: 100%;
+	background-color: aliceblue;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer{
+	width:100%;
+	background-color: rgb(60, 117, 119);
+}
+
+div.ContentArea{
+	background-color: darkturquoise;
+}
+
+div.loginWrapper{
+	background-color: rgb(158, 210, 255);
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+.loginPage{
+	width: 100%;
+	height: 100%;
+}
+
+div.loginPrompt{
+	border-radius: 10px;
+	background-color: whitesmoke;
+	padding: 50px;
+}
