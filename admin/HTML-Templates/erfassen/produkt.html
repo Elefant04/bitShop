@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+	++-htmlHead-++   
+	<title>Bitshop Admin Center - Produkt erfassen</title>
+</head>
+<body>
+	++-header-++
+	<div class="siteWrapper">
+		++-sideNav-++
+
+		<div class="contentArea">
+			<h2>Produkt erfassen</h2>
+			<p>
+				Erfasse hier ein Produkt
+			</p>
+			<div class="itemForm">
+				<form action="addElement.php?action=produkt" method="post" enctype="multipart/form-data">
+					<label>Name: <input type="text" name="name" id="name"></label>
+					<label>Beschreibung: <textarea name="beschreibung" id="beschreibung"></textarea></label>
+					<label>Preis: <input type="text" name="preis" id="preis"></label>
+					<label>Rabatt in %: <input type="number" name="rabatt" id="rabatt" value="0" max="100" min="0"></label>
+					<label>Kategorie: <select name="kategorie" id="kategorie">
+						@@@-kategorien-@@@
+							<option value="@@#-id-#@@">@@#-name-#@@</option>
+						@@@end@@@
+					</select></label>
+					<label>Hersteller: <select name="hersteller" id="hersteller">
+						@@@-hersteller-@@@
+							<option value="@@#-id-#@@">@@#-name-#@@</option>
+						@@@end@@@
+					</select></label>
+					<label>Bild: <input type="file" name="bild" id="bild" required></label>
+					<input type="submit" name="submit" value="erfassen">
+				</form>
+			</div>
+		</div>
+
+
+	</div>
+	++-footer-++
+</body>
+</html>
