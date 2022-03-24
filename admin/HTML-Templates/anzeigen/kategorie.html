@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+	++-htmlHead-++   
+	<title>Bitshop Admin Center - Kategorien anzeigen</title>
+</head>
+<body>
+	++-header-++
+	<div class="siteWrapper">
+		++-sideNav-++
+
+		<div class="contentArea">
+			<h2>Kategorien anzeigen</h2>
+			<p>
+				Dies sind alle zurzeit erfassten Kategorien
+			</p>
+			<div class="dataViewTable">
+				<table>
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Beschreibung</th>
+							<th>bearbeiten</th>
+						</tr>
+					</thead>
+					@@@-Data-@@@
+						<tr>
+							<td>@@#-id-#@@</td>
+							<td>@@#-name-#@@</td>
+							<td>@@#-beschreibung-#@@</td>
+							<td><a href="editElement.php?action=kategorie&id=@@#-id-#@@">Kategorie bearbeiten</a></td>
+						</tr>
+					@@@end@@@
+				</table>
+			</div>
+		</div>
+
+
+		</div>
+	++-footer-++
+</body>
+</html>

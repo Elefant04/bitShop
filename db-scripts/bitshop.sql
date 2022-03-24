@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 18. Mrz 2022 um 12:02
--- Server-Version: 10.4.20-MariaDB
--- PHP-Version: 8.0.9
+-- Erstellungszeit: 24. Mrz 2022 um 17:02
+-- Server-Version: 10.4.21-MariaDB
+-- PHP-Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -22,6 +22,40 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `bitshop` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `bitshop`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(254) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `admin`
+--
+
+INSERT INTO `admin` (`id`, `username`, `password`) VALUES
+(1, 'miche', '$2y$10$B.ZVMjzhq4D/FOeayXNkXuguFkr5nHXFld3380bq19QWGh0bzmWvC'),
+(2, 'timo', '$2y$10$LE3gcihP.oXk084TIi1o0emT2OD0kSpZ8pNmIQYp82Ii7209rYGTy');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `bild`
+--
+
+DROP TABLE IF EXISTS `bild`;
+CREATE TABLE `bild` (
+  `id` int(11) NOT NULL,
+  `pfad` varchar(2024) NOT NULL,
+  `beschreibung` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -56,7 +90,8 @@ INSERT INTO `hersteller` (`id`, `name`) VALUES
 (16, 'MSI'),
 (17, 'Mifcom'),
 (18, 'PNY'),
-(19, 'Hyrican');
+(19, 'Hyrican'),
+(20, 'AsRock');
 
 -- --------------------------------------------------------
 
@@ -82,7 +117,8 @@ INSERT INTO `kategorie` (`id`, `name`, `beschreibung`) VALUES
 (4, 'Monitore', ''),
 (5, 'RAM', ''),
 (6, 'SSD', ''),
-(9, 'Handy', '');
+(9, 'Handy', ''),
+(12, 'Mainboard', 'Herzstück eines PCs');
 
 -- --------------------------------------------------------
 
@@ -164,14 +200,40 @@ INSERT INTO `produkt` (`id`, `name`, `hersteller`, `kategorie`, `rabatt`, `preis
 (36, 'PNY VCNRTXA6000-SB Grafikkarte NVIDIA RTX A6000 GDDR6', 18, 1, 0, '4987.00', 'PNY Grafikkarte NVIDIA Quadro RTX A6000 SB 48 GB OEM, Grafikkategorie: Professional/CAD, Formfaktor: Full-Height, Slot Belegung: Dual Slot, Grafikspeicher Grösse: 48 GB, Kühlungstyp: Aktiv, Schnittstelle Grafikkarte: PCI Express 4.0 x16.', '88634989_1645766534.jpg'),
 (37, 'Captiva G29IG 20V2', 7, 2, 0, '4168.00', 'Erlebe mit Captiva Gaming PC Systemen heisseste Shots und schärfste Sessions im Spiel deiner Wahl. Captiva stellt dir erstklassige Hardware, namhafter Hersteller zur Verfügung. Darunter Marken wie Samsung, WD, Hitachi, LG, Sony, Intel, AMD, NVIDIA, Pioneer, Seagate, Kingston und viele Weitere - Ein Genuss für deine Zockerseele.\r\n\r\nDie High-Tech-Produktion in München sorgt dafür, dass du dich mit aktuellen Computerspielen ausleben kannst: Ob Rollenspiele, Ego-Shooter, Strategie & Co, deine Sessions werden zur High-End-Gaming-Experience bei der du deine Gegner an die Wand zockst. Vor dem Versand wird dein Baby nochmal genauestens auf Herz und Nieren getestet. Und das nicht nur einmal.', '2390538-n0.avif'),
 (38, 'Captiva G29AG 21V1', 7, 2, 0, '3752.00', 'AMD Ryzen 9 5900X, 32 GB, 2000 GB, SSD', '59559_01.avif'),
-(39, 'Hyrican Striker 6753', 19, 1, 0, '3566.00', 'Der perfekte Einstieg in die Welt des Gamings. Unübersehbar ist das Design mit farbiger ARGB-Beleuchtung in der Front. Die geregelten ARGB-Lüfter verleihen dem PC nicht nur eine kraftvolle Optik, sondern sorgen für perfekte und geräuscharme Kühlleistung bei unendlich viel Gamingspass. Das Kühlkonzept der Hyrican Striker Serie ist alles andere als Standard. Dieser PC besitzt eine Hochleistungsflüssigkeitskühlung für den Prozessor. Die Kühllösung stellt eine geschlossene Einheit dar und ist somit komplett wartungsfrei. Hyrican Striker Gaming-PCs mit dem Intel Core Prozessor der 10. Generation bieten erstklassige Leistung und faszinierende Funktionalität.\r\n\r\nDer Intel Core i7-10700F Prozessor, mit 8 Kernen und 16 Threads bietet erstklassige Leistung und faszinierende Funktionalitäten. Erleben Sie schnelleres Multitasking und erstellen Sie beeindruckende digitale Medien. Zusammen mit den Grafikprozessoren der GeForce RTX 30-Serie können kreative Projekte auf ein neues Level gebracht werden. Die GeForce RTX 3080 Ti liefert mithilfe von Ampere, der RTX-Architektur der 2. Generation von Nvidia, die lang ersehnte Superleistung. Erhalte ein überwältigendes Gaming-Erlebnis mit verbesserten Raytracing - und Tensor-Recheneinheiten, neuen StreamingMultiprozessoren und dem superschnellen G6X-Speicher. Windows 11 ist perfekt für jede Art von Gaming.', '211112152959300301900085G.jpeg'),
+(39, 'Hyrican Striker 6753', 19, 2, 0, '3566.00', 'Der perfekte Einstieg in die Welt des Gamings. Unübersehbar ist das Design mit farbiger ARGB-Beleuchtung in der Front. Die geregelten ARGB-Lüfter verleihen dem PC nicht nur eine kraftvolle Optik, sondern sorgen für perfekte und geräuscharme Kühlleistung bei unendlich viel Gamingspass. Das Kühlkonzept der Hyrican Striker Serie ist alles andere als Standard. Dieser PC besitzt eine Hochleistungsflüssigkeitskühlung für den Prozessor. Die Kühllösung stellt eine geschlossene Einheit dar und ist somit komplett wartungsfrei. Hyrican Striker Gaming-PCs mit dem Intel Core Prozessor der 10. Generation bieten erstklassige Leistung und faszinierende Funktionalität.\r\n\r\nDer Intel Core i7-10700F Prozessor, mit 8 Kernen und 16 Threads bietet erstklassige Leistung und faszinierende Funktionalitäten. Erleben Sie schnelleres Multitasking und erstellen Sie beeindruckende digitale Medien. Zusammen mit den Grafikprozessoren der GeForce RTX 30-Serie können kreative Projekte auf ein neues Level gebracht werden. Die GeForce RTX 3080 Ti liefert mithilfe von Ampere, der RTX-Architektur der 2. Generation von Nvidia, die lang ersehnte Superleistung. Erhalte ein überwältigendes Gaming-Erlebnis mit verbesserten Raytracing - und Tensor-Recheneinheiten, neuen StreamingMultiprozessoren und dem superschnellen G6X-Speicher. Windows 11 ist perfekt für jede Art von Gaming.', '211112152959300301900085G.jpeg'),
 (40, 'HP NVIDIA RTX A6000 48GB 4DP GFX', 5, 1, 0, '7668.00', 'NVIDIA RTX A6000 48GB 4DP GFX', 'wid-W126476648.jpeg'),
 (41, 'Gigabyte Aorus GeForce RTX 3090 Xtreme', 14, 1, 0, '2873.16', 'Die Max-Covered-Kühlung verfügt über 2x 115-mm- und 1x 100-mm-Blattstapellüfter mit Windklauen-Design und abwechselnder Drehung, so dass der Luftdruck den Kühlkörper vollständig abdecken kann. Alternate Spinning kann die Turbulenzen benachbarter Lüfter reduzieren und den Luftdruck erhöhen. Verstärken und kanalisieren Sie den Luftstrom, um den Kühlkörper vollständig zu bedecken. Ein erweitertes Kühlkörper-Design lässt den Luftstrom durch, wodurch eine bessere Wärmeableitung erreicht wird. Der aktive 3D-Lüfter sorgt für eine semi-passive Kühlung, und die Lüfter bleiben ausgeschaltet, wenn die GPU unter geringer Last oder bei Spielen mit geringem Stromverbrauch läuft. Die doppelte Kugellagerstruktur hat eine bessere Wärmebeständigkeit und Effizienz als die Hülsenstruktur. Die schräge und ungleiche Rippenhöhe kann den Luftstrom durch die Rippen leiten und die Kontaktfläche vergrössern. Mit direktem Kontakt zur GPU und zum VRAM kombiniert die grosse Kupferplatte die Verbundwärmerohre, um die von den inneren Kernen erzeugte Wärme effizient zum Kühlkörper zu übertragen.', '4.avif'),
-(42, 'MSI GeForce RTX 3090 GAMING X TRIO 24G', 16, 1, 0, '2799.00', 'Die MSI GeForce RTX 3090 Gaming X Trio 24G ist mit einem leistungsstarken Grafikprozessor und besonders schnellem GDDR6X-Grafikspeicher ausgestattet. Dieses Modell bietet ab Werk erhöhte Taktfrequenzen für eine gesteigerte Leistung. Die Gaming-Grafikkarte eignet sich für Spieler mit hohen Ansprüchen an Grafikqualität und Leistung. Im Vergleich zur RTX-2080-Serie wurden die Rechengeschwindigkeit der Rasterization-Optik und die Raytracing-Performance deutlich gesteigert. Mit einer GeForce RTX 3090 sind extrem hohe Frameraten in 4K und sogar flüssiges Gaming in 8K möglich.', 'msi-geforce_rtx_3090_GAMING_X_TRIO_24G_2d1.avif');
+(42, 'MSI GeForce RTX 3090 GAMING X TRIO 24G', 16, 1, 0, '2799.00', 'Die MSI GeForce RTX 3090 Gaming X Trio 24G ist mit einem leistungsstarken Grafikprozessor und besonders schnellem GDDR6X-Grafikspeicher ausgestattet. Dieses Modell bietet ab Werk erhöhte Taktfrequenzen für eine gesteigerte Leistung. Die Gaming-Grafikkarte eignet sich für Spieler mit hohen Ansprüchen an Grafikqualität und Leistung. Im Vergleich zur RTX-2080-Serie wurden die Rechengeschwindigkeit der Rasterization-Optik und die Raytracing-Performance deutlich gesteigert. Mit einer GeForce RTX 3090 sind extrem hohe Frameraten in 4K und sogar flüssiges Gaming in 8K möglich.', 'msi-geforce_rtx_3090_GAMING_X_TRIO_24G_2d1.avif'),
+(44, 'Vera Brenni', 6, 4, 1, '100000.00', 'das beste RAM', 'hef64Brenni Vera.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `produkt_zu_bild`
+--
+
+DROP TABLE IF EXISTS `produkt_zu_bild`;
+CREATE TABLE `produkt_zu_bild` (
+  `produkt_id` int(11) NOT NULL,
+  `bild_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indizes der exportierten Tabellen
 --
+
+--
+-- Indizes für die Tabelle `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indizes für die Tabelle `bild`
+--
+ALTER TABLE `bild`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indizes für die Tabelle `hersteller`
@@ -197,22 +259,41 @@ ALTER TABLE `kunde`
 --
 ALTER TABLE `produkt`
   ADD PRIMARY KEY (`id`);
+ALTER TABLE `produkt` ADD FULLTEXT KEY `FullProductSearch` (`name`);
+
+--
+-- Indizes für die Tabelle `produkt_zu_bild`
+--
+ALTER TABLE `produkt_zu_bild`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT für exportierte Tabellen
 --
 
 --
+-- AUTO_INCREMENT für Tabelle `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT für Tabelle `bild`
+--
+ALTER TABLE `bild`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT für Tabelle `hersteller`
 --
 ALTER TABLE `hersteller`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT für Tabelle `kategorie`
 --
 ALTER TABLE `kategorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT für Tabelle `kunde`
@@ -224,7 +305,13 @@ ALTER TABLE `kunde`
 -- AUTO_INCREMENT für Tabelle `produkt`
 --
 ALTER TABLE `produkt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT für Tabelle `produkt_zu_bild`
+--
+ALTER TABLE `produkt_zu_bild`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
