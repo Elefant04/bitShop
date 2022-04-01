@@ -11,7 +11,7 @@ $staticArray = array_merge($staticArray, $langReplacementArray);
 
 if(isset($_GET['id'])){
 
-	$produkteQuery = "SELECT *, k.name as kategorieName, h.name as herstellerName, produkt.name as name, produkt.beschreibung as beschreibung FROM produkt JOIN kategorie k on k.id = produkt.kategorie JOIN hersteller h on h.id = produkt.hersteller WHERE produkt.id = :id";
+	$produkteQuery = "SELECT *, k.name as kategorieName, h.name as herstellerName, produkt.name as name, produkt.beschreibung as beschreibung, FORMAT((produkt.preis_normal * (1 - produkt.rabatt/100)),2) as preis FROM produkt JOIN kategorie k on k.id = produkt.kategorie JOIN hersteller h on h.id = produkt.hersteller WHERE produkt.id = :id";
 
 	try{
 		$produkteStat = $db -> prepare($produkteQuery);
@@ -28,7 +28,7 @@ if(isset($_GET['id'])){
 	
 	$produktArray[0] = array('name' => 'name', 'content' => $produkt['name']);
 	$produktArray[1] = array('name' => 'beschreibung', 'content' => $produkt['beschreibung']);
-	$produktArray[2] = array('name' => 'preis', 'content' => $produkt['preis_normal']);
+	$produktArray[2] = array('name' => 'preis', 'content' => $produkt['preis']);
 	$produktArray[3] = array('name' => 'rabatt', 'content' => $produkt['rabatt']);
 	$produktArray[4] = array('name' => 'kategorie', 'content' => $produkt['kategorie']);
 	$produktArray[5] = array('name' => 'hersteller', 'content' => $produkt['hersteller']);
