@@ -37,7 +37,7 @@ function parseHTML($htmlPath, $staticReplacements,$dynamicReplacements = array()
 						for($l = $startReplacementLine; $l < $endMarkerLine; $l++){
 							$intermediateLine = $html[$l];
 							foreach($staticReplacements as $replacement){
-								$intermediateLine = str_replace($replacement['name'], $replacement['content'], $intermediateLine);
+								$intermediateLine = str_replace('###_' . $replacement['name'] . '_###', $replacement['content'], $intermediateLine);
 							}
 							foreach ($currentItemKeys as $itemKey) {
 								$intermediateLine = str_replace('@@#-' . $itemKey. '-#@@', $currentItem[$itemKey], $intermediateLine);

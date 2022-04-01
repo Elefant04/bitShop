@@ -6,7 +6,7 @@
 
 	function getAllProducts(){
 		global $db;
-		$query = "SELECT *, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id";
+		$query = "SELECT *,p.id as id, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id";
 		try{
 			$prepStat = $db -> prepare($query);
 			$prepStat -> execute();
@@ -22,7 +22,7 @@
 
 	function getMostExpensiveProducts(){
 		global $db;
-		$query = "SELECT *, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id ORDER BY (p.preis_normal * (1 - p.rabatt/100)) DESC LIMIT 5";
+		$query = "SELECT *,p.id as id, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id ORDER BY (p.preis_normal * (1 - p.rabatt/100)) DESC LIMIT 5";
 		try{
 			$prepStat = $db -> prepare($query);
 			$prepStat -> execute();
@@ -38,7 +38,7 @@
 
 	function getProductsFromCategory($kategorie){
 		global $db;
-		$query = "SELECT *, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id WHERE p.kategorie = :kategorieId";
+		$query = "SELECT *,p.id as id, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id WHERE p.kategorie = :kategorieId";
 		try{
 			$prepStat = $db -> prepare($query);
 			$prepStat -> bindParam(':kategorieId', $kategorie);
@@ -60,7 +60,7 @@
 			$start = 0;
 			$rowcount = 10;
 		}
-		$query = "SELECT *, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id WHERE p.kategorie = :kategorieId  LIMIT $start, $rowcount";
+		$query = "SELECT *,p.id as id, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id WHERE p.kategorie = :kategorieId  LIMIT $start, $rowcount";
 		try{
 			$prepStat = $db -> prepare($query);
 			$prepStat -> bindParam(':kategorieId', $kategorie);
@@ -78,7 +78,7 @@
 
 	function getShortProductsFromSearchQuery($SearchQuery){
 		global $db;
-		$query = "SELECT p.bild as bild, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p WHERE p.name LIKE :query LIMIT 5";
+		$query = "SELECT p.id as id, p.bild as bild, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis FROM produkt p WHERE p.name LIKE :query LIMIT 5";
 		try{
 			$prepStat = $db -> prepare($query);
 			$prepStat -> bindValue(':query', '%' . $SearchQuery . '%');
@@ -95,7 +95,7 @@
 
 	function getProductsFromSearchQuery($SearchQuery){
 		global $db;
-		$query = "SELECT *, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis  FROM produkt p WHERE p.name LIKE :query LIMIT 10";
+		$query = "SELECT *,p.id as id, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis  FROM produkt p WHERE p.name LIKE :query LIMIT 10";
 		try{
 			$prepStat = $db -> prepare($query);
 			$prepStat -> bindValue(':query', '%' . $SearchQuery . '%');
@@ -116,7 +116,7 @@
 			$start = 0;
 			$rowcount = 10;
 		}
-		$query = "SELECT *, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis  FROM produkt p WHERE p.name LIKE :query LIMIT $start, $rowcount";
+		$query = "SELECT *,p.id as id, p.name as produktName, FORMAT((p.preis_normal * (1 - p.rabatt/100)),2) as preis  FROM produkt p WHERE p.name LIKE :query LIMIT $start, $rowcount";
 		try{
 			$prepStat = $db -> prepare($query);
 			$prepStat -> bindValue(':query', '%' . $SearchQuery . '%');
