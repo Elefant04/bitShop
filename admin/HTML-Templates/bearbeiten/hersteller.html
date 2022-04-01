@@ -2,7 +2,7 @@
 <html lang="de-CH">
 <head>
 	++-htmlHead-++   
-	<title>Bitshop Admin Center - Start</title>
+	<title>Bitshop Admin Center - Hersteller bearbeiten</title>
 </head>
 <body>
 	++-header-++
@@ -10,10 +10,16 @@
 		++-sideNav-++
 
 		<div class="contentArea">
-			<h2>Admin Center - Start</h2>
+			<h2>Hersteller bearbeiten</h2>
 			<p>
-				Willkommen im Admin-Center des Bitshops
+				Bearbeite hier einen Hersteller
 			</p>
+			<div class="itemForm">
+				<form action="editElement.php?action=produkt&id=###_id_###" method="post">
+					<label>Name: <input type="text" name="name" id="name" value="###_name_###"></label>
+					<input type="submit" name="submit" value="erfassen">
+				</form>
+			</div>
 		</div>
 
 

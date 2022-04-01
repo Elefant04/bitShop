@@ -23,7 +23,7 @@ if(isset($_GET['action'])){
 }
 
 if($viewType == 'produkt'){
-	$query = "SELECT *,p.id as id, p.name as name, h.name as herstellerName , k.name as kategorieName FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id";
+	$query = "SELECT *, p.id as id, p.name as name, h.name as herstellerName , k.name as kategorieName FROM produkt p JOIN hersteller h ON p.hersteller = h.id JOIN kategorie k ON p.kategorie = k.id";
 	try{
 		$prepStat = $db -> prepare($query);
 		$prepStat -> execute();
