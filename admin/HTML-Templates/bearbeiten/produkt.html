@@ -2,7 +2,7 @@
 <html lang="de-CH">
 <head>
 	++-htmlHead-++   
-	<title>Bitshop Admin Center - Start</title>
+	<title>Bitshop Admin Center - Produkt erfassen</title>
 </head>
 <body>
 	++-header-++
@@ -10,14 +10,37 @@
 		++-sideNav-++
 
 		<div class="contentArea">
-			<h2>Admin Center - Start</h2>
+			<h2>Produkt bearbeiten</h2>
 			<p>
-				Willkommen im Admin-Center des Bitshops
+				Bearbeite ein Produkt
 			</p>
+			<img src="../assets/products/###_bild_###" alt="Produktbild" class="productImage">
+			<div class="itemForm">
+				<form action="editElement.php?action=produkt&id=###_id_###" method="post" enctype="multipart/form-data">
+					<label>Name: <input type="text" name="name" id="name" value="###_name_###"></label>
+					<label>Beschreibung: <input type="text" name="beschreibung" id="beschreibung" value="###_beschreibung_###"></input></label>
+					<label>Preis: <input type="text" name="preis" id="preis" value="###_preis_###"></label>
+					<label>Rabatt in %: <input type="number" name="rabatt" id="rabatt" value="0" max="100" min="0" value="###_rabatt_###"></label>
+					<label>Kategorie: <select name="kategorie" id="kategorie">
+						<option value="###_kategorie_###">###_kategorieName_###(Bisher)</option>
+						@@@-kategorien-@@@
+							<option value="@@#-id-#@@">@@#-name-#@@</option>
+						@@@end@@@
+					</select></label>
+					<label>Hersteller: <select name="hersteller" id="hersteller">
+						<option value="###_hersteller_###">###_herstellerName_###(Bisher)</option>
+						@@@-hersteller-@@@
+							<option value="@@#-id-#@@">@@#-name-#@@</option>
+						@@@end@@@
+					</select></label>
+					<label>Bild: <input type="file" name="bild" id="bild"></label>
+					<input type="submit" name="submit" value="erfassen">
+				</form>
+			</div>
 		</div>
 
 
-		</div>
+	</div>
 	++-footer-++
 </body>
 </html>
