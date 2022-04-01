@@ -7,6 +7,7 @@
 div.siteWrapper{
 	width:100%;
 	display:flex;
+	min-height: calc(100vh - 42.4px - 21.5px);
 }
 
 aside{
@@ -14,6 +15,36 @@ aside{
 	background-color: aqua;
 	display: flex;
 	justify-content: center;
+	float: left;
+  	display: block;
+  	text-align: center;
+  	padding: 14px 16px;
+  	text-decoration: none;
+}
+aside nav ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	width: 200px;
+	background-color: #03e0e0;
+}
+
+aside nav li{
+	display: block;
+	color: #03b4b4;
+	padding: 8px 16px;
+	text-decoration: none;
+	flex-basis: 100%;
+}
+
+aside nav li:hover {
+	background-color: hsl(180, 100%, 48%);
+	color: black;
+	border: 1px solid white;
+}
+
+aside nav a {
+	text-decoration: none;
 }
 
 aside nav{
@@ -37,6 +68,7 @@ footer{
 div.contentArea{
 	width: 85%;
 	background-color: darkturquoise;
+	padding-left: 10px;
 }
 
 div.loginWrapper{
@@ -84,4 +116,22 @@ div.dataViewTable * td, div.dataViewTable * td{
 div.dataViewTable * td img{
 	height:80px;
 	width: auto;
+}
+
+html{
+	min-height: 100%;
+}
+
+body{
+	height: inherit;
+}
+
+.itemForm form{
+	display: flex;
+	flex-direction: column;
+	gap: 25px;
+}
+
+input[type=submit]{
+	width: 200px;
 }
